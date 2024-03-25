@@ -1,5 +1,7 @@
 package steps;
 
+import static org.junit.Assert.assertEquals;
+
 import java.time.Duration;
 import java.util.ArrayList;
 
@@ -8,6 +10,7 @@ import org.testng.annotations.Test;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import pages.CartPage;
 import pages.HomePage;
 import pages.LoginPage;
 import pages.ProductsPage;
@@ -15,9 +18,10 @@ import pages.SearchPage;
 import utilities.RetryUtility;
 
 public class AddToCartStepDefination {
-
+	
 	SharedSteps shared = new SharedSteps();
 	public WebDriver driver = shared.getDriver();
+	CartPage cp = new CartPage(driver);
 	LoginPage lp = new LoginPage(driver);
 	HomePage hp = new HomePage(driver);
 	SearchPage sp = new SearchPage(driver);
@@ -43,12 +47,12 @@ public class AddToCartStepDefination {
 	}
 
 	@Then("{string} should be added to my cart")
-	public void should_be_added_to_my_cart(String string) throws InterruptedException {
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
-		hp.clickonCart();
-		String expectedresult = string;
-		hp.clickOnFirstcryIcon();
-		hp.hovertoMyAccount();
-		hp.clickOnLogout();
-	}
-}
+	public void should_be_added_to_my_cart(String expectedProductName) throws InterruptedException {
+	    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
+	    hp.clickonCart();
+	    String actualProductName = cp.getProductNameFromCart();
+	    assertEquals(actualProductName, expectedProductName, "Product name mismatch in the cart");
+	    hp.clickOnFirstcryIcon();
+	    hp.hovertoMyAccount();
+	    hp.clickOnLogout();
+}}

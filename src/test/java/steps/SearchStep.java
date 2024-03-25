@@ -1,5 +1,7 @@
 package steps;
 
+import static org.testng.Assert.assertEquals;
+
 import java.util.ArrayList;
 
 import org.openqa.selenium.WebDriver;
@@ -8,6 +10,8 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.HomePage;
 import pages.SearchPage;
+import static org.junit.Assert.assertEquals;
+import static org.testng.Assert.assertEquals;
 
 public class SearchStep {
 	
@@ -34,12 +38,13 @@ public class SearchStep {
 	}
 
 	@Then("title should be {string}")
-	public void title_should_be(String string) throws InterruptedException {
-		String expectedresult=string;
-//		ArrayList<String> tabs=new ArrayList<>(driver.getWindowHandles());
-//		driver.switchTo().window(tabs.get(0));
-		hp.clickOnFirstcryIcon();
-		hp.hovertoMyAccount();
-		hp.clickOnLogout();
+	public void title_should_be(String expectedTitle) throws InterruptedException {
+	    String actualTitle = driver.getTitle();
+	    assert expectedTitle.equals(actualTitle);
+
+	    hp.clickOnFirstcryIcon();
+	    hp.hovertoMyAccount();
+	    hp.clickOnLogout();
 	}
+
 }

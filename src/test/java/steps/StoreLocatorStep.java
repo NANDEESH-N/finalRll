@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -36,9 +37,10 @@ public class StoreLocatorStep {
 	    ArrayList<String> tabs=new ArrayList<>(driver.getWindowHandles());
 		driver.switchTo().window(tabs.get(1));
 	}
-	@Then("User should be on storelocator page")
-	public void user_should_be_on_storelocator_page() {
-	   
+	@Then("User should be on storelocator page {string}")
+	public void user_should_be_on_storelocator_page(String expectedTitle) {
+		String actualTitle = driver.getTitle();
+	    assert expectedTitle.equals(actualTitle);
 	}
 
 	@When("User select the {string},{string} and {string}")
@@ -55,9 +57,10 @@ public class StoreLocatorStep {
 		sp.clickOnSearchStore();
 	}
 
-	@Then("User must be able to view the {string}")
-	public void user_must_be_able_to_view_the(String string) throws InterruptedException {
-		String expectedresult=string;
+	@Then("User must be able to view the storeresult")
+	public void user_must_be_able_to_view_the() throws InterruptedException {
+		WebElement element= driver.findElement(By.xpath("//div[@class='middle']//img[6]"));
+		Assert.assertTrue(element.isDisplayed(), "Element is not visible");
 		 hp.clickOnFirstcryIcon();
 		  hp.hovertoMyAccount();
 		  hp.clickOnLogout();

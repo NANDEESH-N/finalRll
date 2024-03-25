@@ -13,6 +13,6 @@ Feature: Add to Cart Functionality
     Then "<product>" should be added to my cart
 
     Examples: 
-      | product_name | product |
-      | shirts       |         |
-     
+      | product_name | expectedProductName                                                        |
+      |     15666795 | Pine Kids Cotton Woven Full Sleeves Solid Color Shirt - Orange |
+      |     15934329 | Babyhug Cotton Woven Full Sleeves Checked Shirt - Navy Blue    |

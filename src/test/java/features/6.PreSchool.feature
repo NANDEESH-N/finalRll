@@ -10,12 +10,12 @@ Feature: Find Preschool Locator
     When user can click on storeandpreschool
     And user can click on findpreschool
     And user switches focus to new tab
-    Then user should be on "<preschool>" tab
+    Then user should be on "<ExpectedTitile>" tab
     And user search for "<city>"
     And click on findmy preschool
     Then User should see preschools in "<expectedcity>"
 
     Examples: 
-      | city      |expectedcity|preschool|
-      | Agra      |            |				 |
+      | city      |expectedcity|ExpectedTitile|
+      | Agra      |     Agra       |		FirstCry Intellitots Preschool Locator: Find a Preschool Near You		 |
       

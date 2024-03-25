@@ -1,13 +1,18 @@
 package steps;
 
+import static org.testng.Assert.assertEquals;
+
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import pages.CartFun;
 import pages.CartPage;
 import pages.HomePage;
 import pages.ProductsPage;
@@ -21,7 +26,7 @@ public class CartFuncStep {
 	SearchPage sp=new SearchPage(driver);
 	ProductsPage pp=new ProductsPage(driver);
 	CartPage cp=new CartPage(driver);
-	
+	CartFun cf= new CartFun(driver);
 	@When("User add a few products to the cart")
 	public void user_add_a_few_products_to_the_cart(io.cucumber.datatable.DataTable dataTable) throws InterruptedException {
 		List<List<String>> userLists = dataTable.asLists(String.class);
@@ -43,8 +48,8 @@ public class CartFuncStep {
 	}
 	
 	@Then("user can see {string} in the cart")
-	public void user_can_see_in_the_cart(String string) {
-		String expectedresult=string;
+	public void user_can_see_in_the_cart(String expectedTtext) {
+		cf.checkforproducts(expectedTtext);
 	}
 
 
@@ -60,9 +65,19 @@ public class CartFuncStep {
 	    cp.changeQuantity();
 	}
 
-	@Then("the {string} should be changed")
+	@Then("the quantity should be changed")
 	public void the_should_be_changed(String string) throws InterruptedException {
-		 hp.clickOnFirstcryIcon();
+		// to check the quantity using assertions
+		WebElement dropdown = driver.findElement(By.id("//span[@class=' M14_42 ']"));
+        String actualValue1 = dropdown.getAttribute("value");
+        cp.clickOnQuantyIcon();
+		cp.clickOnQuantyIcon();
+		cp.clickOnQuantyIcon();
+		WebElement dropdown1 = driver.findElement(By.id("//span[@class=' M14_42 ']"));
+        String expectedValue1 = dropdown.getAttribute("value");
+        assertEquals(expectedValue1, actualValue1);
+		
+		hp.clickOnFirstcryIcon();
 		  hp.hovertoMyAccount();
 		  hp.clickOnLogout();
 	}

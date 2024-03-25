@@ -43,8 +43,10 @@ public class ShortListStep {
 		
 	}
 	@Then("user can see {string} in the shortlist")
-	public void user_can_see_in_the_shortlist(String string) {
-		String expectedresult=string;
+	public void title_should(String expectedTitle) throws InterruptedException {
+	    String actualTitle = driver.getTitle();
+	    assert expectedTitle.equals(actualTitle);
+
 	}
 
 	@When("User add a product to the cart from the shortlist")

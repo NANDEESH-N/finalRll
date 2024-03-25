@@ -9,9 +9,9 @@ Feature: Search Functionality
     When User search for "<searchproduct>"
     And select product from the search results
     And User switches focus to the new tab
-    Then title should be "<title>"
+    Then title should be "<expectedTitle>"
 
     Examples: 
-      | searchproduct | title |
-      | watches       |       |
+      | searchproduct | expectedTitle |
+      | 15934333       |   Buy Babyhug Cotton Woven Full Sleeves Checked Shirt - Navy Blue for Boys (3-4 Years) Online in India, Shop at FirstCry.com - 15934333    |
      

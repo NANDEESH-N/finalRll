@@ -1,9 +1,18 @@
 package steps;
 
+import static org.testng.Assert.assertEquals;
+
+import java.io.FileInputStream;
 import java.io.IOException;
 
 import org.apache.poi.EncryptedDocumentException;
+import org.apache.poi.sl.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 import io.cucumber.java.en.Then;
@@ -61,10 +70,22 @@ public class MyProfileStep {
 	}
 
 	@Then("User can view the {string}")
-	public void user_can_view_the(String string) throws InterruptedException {
-		String expectedresult=string;
-		
-		prp.clickonLogutprofile();
+	public void user_can_view_the(String expectedText) throws InterruptedException, IOException {
+	    String filePath = "path/to/your/testdata.xlsx";
+	    FileInputStream fis = new FileInputStream(filePath);
+	    Workbook workbook = new XSSFWorkbook(fis);
+	    //Sheet sheet = workbook.getSheet("Sheet1");
+	    //Row row = sheet.getRow(1);
+	   // expectedText = row.getCell(0).getStringCellValue(); 
+
+	    String actualName = driver.findElement(By.id("Name_30030906")).getText();
+
+	    Assert.assertEquals(actualName, expectedText); 
+
+	    prp.clickonLogutprofile();
+	    workbook.close();
+	    fis.close();
 	}
+
 
 }
