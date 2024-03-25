@@ -1389,3 +1389,16 @@
 [INFO ] 2024-03-25 18:54:37.868 [main] SharedSteps - Test Failed
 [INFO ] 2024-03-25 18:54:38.430 [main] SharedSteps - Execution Finished
 [INFO ] 2024-03-25 18:54:40.913 [main] SharedSteps - Listener Closed
+[INFO ] 2024-03-26 01:09:22.430 [main] SharedSteps - Execution Started
+[INFO ] 2024-03-26 01:09:27.696 [main] SharedSteps - Login with UserId Scenario Started
+[INFO ] 2024-03-26 01:09:28.038 [main] SharedSteps - Login with UserId Scenario Started
+[INFO ] 2024-03-26 01:09:28.153 [main] SharedSteps - Edit user profile Scenario Started
+[INFO ] 2024-03-26 01:09:28.228 [main] SharedSteps - Edit user profile Scenario Started
+[INFO ] 2024-03-26 01:09:28.336 [main] SharedSteps - Edit user profile Scenario Started
+[INFO ] 2024-03-26 01:09:28.505 [main] SharedSteps - Search for Product Scenario Started
+[INFO ] 2024-03-26 01:09:28.560 [main] SharedSteps - Add Product to Cart Scenario Started
+[INFO ] 2024-03-26 01:09:28.605 [main] SharedSteps - Add Product to Cart Scenario Started
+[INFO ] 2024-03-26 01:09:28.666 [main] SharedSteps - Find FirstCry Stores Scenario Started
+[INFO ] 2024-03-26 01:09:28.848 [main] SharedSteps - Search for a Preschool in city Scenario Started
+[INFO ] 2024-03-26 01:09:28.978 [main] SharedSteps - Manage Cart Functions Scenario Started
+[INFO ] 2024-03-26 01:09:29.047 [main] SharedSteps - Manage Shortlist Functions Scenario Started
